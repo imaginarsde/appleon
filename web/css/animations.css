@@ -1,0 +1,9 @@
+@keyframes homeFade { from { opacity:0; filter:brightness(.75); } to { opacity:1; filter:brightness(1); } }
+@keyframes topicIntro { 0% { opacity:0; transform:scale(.88); } 70% { opacity:1; transform:scale(1.025); } 100% { opacity:1; transform:scale(1); } }
+@keyframes topicBreath { 0%,100% { transform:scale(1); filter:brightness(1); } 50% { transform:scale(1.022); filter:brightness(1.07); } }
+@keyframes nodeIntro { to { opacity:1; } }
+@keyframes nodePulse { 0%,100% { opacity:.62; transform:scale(.82); } 50% { opacity:1; transform:scale(1.28); } }
+@keyframes tapIntro { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+@keyframes tapRipple { 0% { opacity:.7; transform:scale(.55) translateY(0); } 55% { opacity:.18; transform:scale(1.45) translateY(-4px); } 100% { opacity:0; transform:scale(1.75) translateY(-5px); } }
+@keyframes borderFlash { 0% { opacity:0; } 35% { opacity:.9; } 100% { opacity:0; } }
+@keyframes loaderMove { 0% { transform:translateX(-120%); } 55% { transform:translateX(125%); } 100% { transform:translateX(280%); } }

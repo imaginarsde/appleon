@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+  <meta name="theme-color" content="#080d0b" />
+  <title>LEÓN - Experiencia Educativa Interactiva | IMAGINAR</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+  <main id="app" class="app-shell" aria-label="Experiencia educativa interactiva sobre el león">
+    <section id="stage" class="stage" aria-label="Pantalla principal del león">
+      <img id="homeImage" class="home-image" src="assets/images/home.webp" alt="León en la sabana con accesos a Alimentación, Características y Peso y Altura" draggable="false" />
+
+      <button class="topic-button topic-alimentacion" data-section="alimentacion" aria-label="Abrir información sobre alimentación del león">
+        <img src="assets/images/button_alimentacion.webp" alt="" draggable="false" />
+      </button>
+
+      <button class="topic-button topic-caracteristicas" data-section="caracteristicas" aria-label="Abrir información sobre características del león">
+        <img src="assets/images/button_caracteristicas.webp" alt="" draggable="false" />
+      </button>
+
+      <button class="topic-button topic-peso" data-section="pesoAltura" aria-label="Abrir información sobre peso y altura del león">
+        <img src="assets/images/button_peso_altura.webp" alt="" draggable="false" />
+      </button>
+
+      <span class="node node-alimentacion" aria-hidden="true"></span>
+      <span class="node node-caracteristicas" aria-hidden="true"></span>
+      <span class="node node-peso" aria-hidden="true"></span>
+
+      <div class="tap-hint" aria-hidden="true"><span></span></div>
+
+      <div id="backdrop" class="modal-backdrop" hidden></div>
+
+      <section id="modalLayer" class="modal-layer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Información del león" hidden>
+        <div id="modalCard" class="modal-card">
+          <img id="modalImage" src="" alt="" draggable="false" />
+          <button id="modalCloseX" class="modal-hit modal-close-x" aria-label="Cerrar información"></button>
+          <button id="modalCloseMain" class="modal-hit modal-close-main" aria-label="Cerrar información y volver al menú principal"></button>
+        </div>
+      </section>
+
+      <div id="loader" class="loader" aria-live="polite">
+        <div class="loader-mark">IMAGINAR</div>
+        <div class="loader-text">Cargando experiencia...</div>
+        <div class="loader-line"><span></span></div>
+      </div>
+      <div id="errorBox" class="error-box"></div>
+    </section>
+  </main>
+
+  <script src="js/audio.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
