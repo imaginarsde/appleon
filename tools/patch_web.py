@@ -67,7 +67,7 @@ q=re.sub(r"stage\.querySelector\('#export-bank'\)\.onclick=.*?;\n\s*stage\.query
   if(selected==='preguntas')''',q,flags=re.S)
 W("settings.js",q)
 
-a=R("app.js").replace("const category=()=>data.categories[current?.category??0];","const category=()=>data.categories[current&&current.category!=null?current.category:0];").replace("stage.focus({preventScroll:true});","stage.focus();")
+a=R("app.js").replace("const category=()=>data.categories[current?.category??0];","const category=()=>data.categories[current&&current.category!=null?current.category:0];").replace("current?.special","current&&current.special").replace("stage.focus({preventScroll:true});","stage.focus();")
 mm=re.search(r" async function render\(\)\{([\s\S]*?)\}\n document\.addEventListener",a)
 if not mm: raise RuntimeError("render no encontrado")
 body=mm.group(1).replace("await motion.exit(id);","return Promise.resolve(motion.exit(id)).then(function(){")
