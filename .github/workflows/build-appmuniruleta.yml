@@ -1,0 +1,46 @@
+name: Build APPMUNIRULETA APK
+on:
+  push:
+    branches: [ build-appmuniruleta ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch source
+        run: |
+          git clone https://github.com/ManuAmu/RuletaDir.git websrc
+          cd websrc
+          git checkout c6a407bbe8eb4cc8cbbdc8be48ce8b3e41e2a110
+          rm -rf .git
+      - name: Adapt for Android 7
+        run: python3 tools/patch_web.py websrc
+      - name: Prepare assets
+        run: |
+          rm -rf app/src/main/assets
+          mkdir -p app/src/main/assets
+          cp -R websrc/. app/src/main/assets/
+          test -s app/src/main/assets/index.html
+          test -s app/src/main/assets/android7.css
+          test -s app/src/main/assets/assets/vendor/gsap.min.js
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: Build APK
+        run: gradle :app:assembleDebug --stacktrace
+      - name: Rename
+        run: cp app/build/outputs/apk/debug/app-debug.apk appmuniruleta.apk
+      - name: Validate
+        run: |
+          unzip -l appmuniruleta.apk | grep 'assets/index.html'
+          unzip -l appmuniruleta.apk | grep 'assets/assets/municipalidad.png'
+          unzip -t appmuniruleta.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: appmuniruleta-apk
+          path: appmuniruleta.apk

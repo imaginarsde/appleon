@@ -1,20 +1,8 @@
 plugins { id 'com.android.application' }
 android {
-    namespace 'ar.com.imaginar.appleon'
-    compileSdk 35
-    defaultConfig {
-        applicationId 'ar.com.imaginar.appleon'
-        minSdk 21
-        targetSdk 25
-        versionCode 100
-        versionName '1.0'
-    }
-    buildTypes {
-        debug { minifyEnabled false }
-        release { minifyEnabled false; shrinkResources false }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+ namespace 'ar.com.imaginar.appmuniruleta'
+ compileSdk 35
+ defaultConfig { applicationId 'ar.com.imaginar.appmuniruleta'; minSdk 21; targetSdk 25; versionCode 100; versionName '1.0' }
+ buildTypes { debug { minifyEnabled false }; release { minifyEnabled false; shrinkResources false } }
+ compileOptions { sourceCompatibility JavaVersion.VERSION_1_8; targetCompatibility JavaVersion.VERSION_1_8 }
 }
